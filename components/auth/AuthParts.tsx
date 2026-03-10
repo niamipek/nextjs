@@ -1,17 +1,31 @@
-﻿import type { ReactNode } from "react";
+import type { FormEvent, ReactNode } from "react";
 import styles from "./auth.module.css";
 
 export function AuthDivider() {
   return <div className={styles.divider}>HOẶC TIẾP TỤC VỚI</div>;
 }
 
-export function AuthForm({ children }: { children: ReactNode }) {
-  return <div className={styles.form}>{children}</div>;
+type AuthFormProps = {
+  children: ReactNode;
+  onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
+};
+
+export function AuthForm({ children, onSubmit }: AuthFormProps) {
+  return (
+    <form className={styles.form} onSubmit={onSubmit}>
+      {children}
+    </form>
+  );
 }
 
-export function AuthCTA({ text }: { text: string }) {
+type AuthCTAProps = {
+  text: string;
+  type?: "button" | "submit";
+};
+
+export function AuthCTA({ text, type = "button" }: AuthCTAProps) {
   return (
-    <button type="button" className={styles.cta}>
+    <button type={type} className={styles.cta}>
       <span>{text}</span>
       <span>→</span>
     </button>
