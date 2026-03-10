@@ -1,0 +1,225 @@
+﻿.authViewport {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f3f5fa;
+}
+
+.authCard {
+  width: min(860px, 100%);
+  background: #fbfcfe;
+  border-radius: 32px;
+  padding: 58px 60px 48px;
+  border: 1px solid #ebeff6;
+}
+
+.authTitle {
+  margin: 0;
+  text-align: center;
+  color: #4461f2;
+  font-size: clamp(46px, 5vw, 70px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.authSubtitle {
+  margin: 14px auto 0;
+  max-width: 640px;
+  text-align: center;
+  color: #74839d;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.4;
+}
+
+.socialRow {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.socialButton {
+  height: 72px;
+  border-radius: 20px;
+  border: 1px solid #e4e9f2;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.divider {
+  margin: 34px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #9aa8bf;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e6ebf3;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.labelRow {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 16px;
+  color: #334155;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #4a72f8;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.inputWrap {
+  height: 76px;
+  border-radius: 20px;
+  border: 1px solid #dfe6f1;
+  background: #f7faff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.input::placeholder {
+  color: #9cadc4;
+}
+
+.trailingButton {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  color: #8ea1bc;
+}
+
+.cta {
+  margin-top: 8px;
+  height: 78px;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(90deg, #2f6bee 0%, #5138f0 100%);
+  box-shadow: 0 12px 26px rgba(47, 107, 238, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.footer {
+  margin-top: 22px;
+  text-align: center;
+  color: #9ca9bc;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.footer strong {
+  color: #3567f2;
+  font-weight: 700;
+}
+
+@media (max-width: 820px) {
+  .authCard {
+    padding: 34px 26px 28px;
+    border-radius: 28px;
+  }
+
+  .authTitle {
+    font-size: 54px;
+  }
+
+  .authSubtitle {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  .socialRow {
+    margin-top: 26px;
+    gap: 12px;
+  }
+
+  .socialButton {
+    height: 62px;
+    border-radius: 18px;
+    font-size: 15px;
+  }
+
+  .divider {
+    margin: 28px 0 24px;
+  }
+
+  .label,
+  .link {
+    font-size: 15px;
+  }
+
+  .inputWrap {
+    height: 68px;
+    border-radius: 18px;
+    padding: 0 16px;
+  }
+
+  .input {
+    font-size: 17px;
+  }
+
+  .cta {
+    height: 70px;
+    border-radius: 18px;
+    font-size: 17px;
+  }
+
+  .footer {
+    font-size: 15px;
+  }
+}
