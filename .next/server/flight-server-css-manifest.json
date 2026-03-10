@@ -1,0 +1,26 @@
+{
+  "cssImports": {
+    "D:\\next\\nextjs\\app\\layout.tsx": [
+      "D:\\next\\nextjs\\app\\globals.css"
+    ],
+    "D:\\next\\nextjs\\app\\login\\page.tsx": [
+      "D:\\next\\nextjs\\components\\auth\\auth.module.css"
+    ],
+    "D:\\next\\nextjs\\app\\register\\page.tsx": [
+      "D:\\next\\nextjs\\components\\auth\\auth.module.css"
+    ]
+  },
+  "cssModules": {
+    "D:\\next\\nextjs\\app\\page": [
+      "D:\\next\\nextjs\\app\\globals.css"
+    ],
+    "D:\\next\\nextjs\\app\\login\\page": [
+      "D:\\next\\nextjs\\app\\globals.css",
+      "D:\\next\\nextjs\\components\\auth\\auth.module.css"
+    ],
+    "D:\\next\\nextjs\\app\\register\\page": [
+      "D:\\next\\nextjs\\app\\globals.css",
+      "D:\\next\\nextjs\\components\\auth\\auth.module.css"
+    ]
+  }
+}

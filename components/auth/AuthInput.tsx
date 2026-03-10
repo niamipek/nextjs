@@ -1,27 +1,40 @@
-﻿import type { ReactNode } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import styles from "./auth.module.css";
 
 type AuthInputProps = {
+  name?: string;
   label?: string;
   placeholder: string;
   leadingIcon: ReactNode;
   trailing?: ReactNode;
   type?: "text" | "email" | "password";
+  value?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export function AuthInput({
+  name,
   label,
   placeholder,
   leadingIcon,
   trailing,
   type = "text",
+  value,
+  onChange,
 }: AuthInputProps) {
   return (
     <>
       {label ? <div className={styles.label}>{label}</div> : null}
       <label className={styles.inputWrap}>
         {leadingIcon}
-        <input className={styles.input} type={type} placeholder={placeholder} />
+        <input
+          className={styles.input}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
         {trailing ? <span className={styles.trailingButton}>{trailing}</span> : null}
       </label>
     </>
