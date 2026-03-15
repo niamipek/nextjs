@@ -1,0 +1,119 @@
+:root {
+  --page-bg: #f4f5f6;
+  --surface-card: #ffffff;
+  --surface-base: #ffffff;
+  --border-default: #e5e7eb;
+  --text-primary: #1f1f1f;
+  --text-muted: #6b7280;
+  --text-inverse: #ffffff;
+  --text-strong: #111827;
+
+  --top-header-bg: #ffffff;
+  --brand-text: #0b3b75;
+  --brand-shape: #2eb2ff;
+  --brand-shape-second: #25bf4a;
+  --header-actions-text: #4b5563;
+  --icon-dot-border: #9ca3af;
+  --flag-bg: #da251d;
+  --flag-star: #ffeb3b;
+  --avatar-bg: #e7f0ff;
+  --avatar-border: #cfe0ff;
+
+  --main-nav-bg: #1273ea;
+  --nav-item-hover-bg: #0a5fca;
+  --sale-btn-bg: #ffffff;
+  --sale-btn-text: #0a66d8;
+  --badge-new-bg: #ef4444;
+
+  --metric-icon-blue: #1d73df;
+  --metric-icon-orange: #fb923c;
+  --metric-icon-green: #16a34a;
+  --metric-icon-red: #ef4444;
+  --metric-label-text: #374151;
+  --metric-sub-text: #6b7280;
+  --badge-value-bg: #e8f1ff;
+  --badge-value-text: #1273ea;
+
+  --select-border: #d1d5db;
+  --select-bg: #ffffff;
+  --select-text: #374151;
+  --tabs-border: #eef1f4;
+  --tab-text: #6b7280;
+  --tab-active: #1273ea;
+
+  --chart-axis-border: #d8dce2;
+  --chart-grid: #edf0f3;
+  --chart-label-text: #6b7280;
+  --chart-bar-fill: #1273ea;
+  --chart-name-text: #4b5563;
+  --chart-value-text: #4b5563;
+
+  --utility-icon-bg: #ebf3ff;
+  --utility-icon-text: #1273ea;
+  --utility-sub-text: #6b7280;
+
+  --alert-icon-border: #f4b267;
+  --alert-icon-text: #d97706;
+
+  --timeline-icon-border: #d1d5db;
+  --timeline-icon-bg: #f5f6f8;
+  --timeline-icon-text: #6b7280;
+  --timeline-line: #e5e7eb;
+  --activity-text: #1f2937;
+  --link-blue: #1273ea;
+  --time-text: #9ca3af;
+  --support-pill-bg: #1273ea;
+
+  --product-filter-radio-border: #9ca3af;
+  --product-filter-trigger-border: #cfd6e3;
+  --product-filter-trigger-bg: #ffffff;
+  --product-filter-trigger-text: #1f2937;
+  --product-filter-calendar: #4b5563;
+  --product-filter-select-border: #cfd6e3;
+  --product-filter-select-bg: #ffffff;
+  --product-filter-select-text: #6b7280;
+  --product-chip-border: #cfd6e3;
+  --product-chip-bg: #ffffff;
+  --product-chip-text: #4b5563;
+  --product-chip-active-bg: #1273ea;
+  --product-chip-active-text: #ffffff;
+
+  --product-list-subtitle: #6b7280;
+  --product-list-search-border: #cfd6e3;
+  --product-list-search-bg: #ffffff;
+  --product-list-search-text: #374151;
+  --product-list-secondary-border: #cfd6e3;
+  --product-list-secondary-bg: #ffffff;
+  --product-list-secondary-text: #374151;
+
+  --product-table-head-border: #d9e2ef;
+  --product-table-head-bg: #eaf3ff;
+  --product-table-head-text: #111827;
+  --product-table-body-text: #111827;
+  --product-catalog-fav: #7c8aa0;
+  --product-pagination-meta: #6b7280;
+  --product-page-button-border: #d1d5db;
+  --product-page-button-bg: #ffffff;
+  --product-page-button-text: #374151;
+  --product-page-button-active-bg: #1273ea;
+  --product-page-button-active-text: #ffffff;
+  --product-page-dots: #6b7280;
+
+  --product-import-overlay: rgba(15, 23, 42, 0.18);
+  --product-import-modal-bg: #ffffff;
+  --product-import-modal-shadow: rgba(15, 23, 42, 0.18);
+  --product-import-header-border: #e5e7eb;
+  --product-import-close-bg: #e5e7eb;
+  --product-import-close-text: #4b5563;
+  --product-import-steps-border: #e5e7eb;
+  --product-import-step-text: #6b7280;
+  --product-import-step-active-bg: #f1f1f1;
+  --product-import-step-active-text: #374151;
+  --product-import-dropzone-border: #d1d5db;
+  --product-import-drop-title: #4b5563;
+  --product-import-drop-note: #6b7280;
+  --product-import-select-bg: #24a159;
+  --product-import-file: #1273ea;
+  --product-import-help-line: #374151;
+  --product-import-link: #1273ea;
+}
