@@ -742,80 +742,28 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/login/page.tsx": {
+    "(app-client)/./app/product/page.tsx": {
       "*": {
-        "id": "(sc_client)/./app/login/page.tsx",
+        "id": "(sc_client)/./app/product/page.tsx",
         "name": "*",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/product/page:static/chunks/app/product/page.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./app/login/page.tsx",
+        "id": "(sc_client)/./app/product/page.tsx",
         "name": "",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/product/page:static/chunks/app/product/page.js"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./app/login/page.tsx",
+        "id": "(sc_client)/./app/product/page.tsx",
         "name": "default",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/link.js": {
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "*",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "default",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/register/page.tsx": {
-      "*": {
-        "id": "(sc_client)/./app/register/page.tsx",
-        "name": "*",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/register/page.tsx",
-        "name": "",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/register/page.tsx",
-        "name": "default",
-        "chunks": [
-          "app/register/page:static/chunks/app/register/page.js"
+          "app/product/page:static/chunks/app/product/page.js"
         ],
         "async": false
       }
@@ -825,12 +773,6 @@ self.__RSC_MANIFEST={
   "cssFiles": {
     "D:\\next\\nextjs\\app\\layout": [
       "static/css/app/layout.css"
-    ],
-    "D:\\next\\nextjs\\app\\login\\page": [
-      "static/css/app/login/page.css"
-    ],
-    "D:\\next\\nextjs\\app\\register\\page": [
-      "static/css/app/register/page.css"
     ]
   },
   "clientModules": {
@@ -2537,107 +2479,27 @@ self.__RSC_MANIFEST={
         "static/css/app/layout.css"
       ]
     },
-    "D:\\next\\nextjs\\components\\auth\\auth.module.css#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/login/page.css",
-        "static/css/app/register/page.css"
-      ]
-    },
-    "D:\\next\\nextjs\\app\\login\\page.tsx": {
-      "id": "(app-client)/./app/login/page.tsx",
+    "D:\\next\\nextjs\\app\\product\\page.tsx": {
+      "id": "(app-client)/./app/product/page.tsx",
       "name": "*",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
-    "D:\\next\\nextjs\\app\\login\\page.tsx#": {
-      "id": "(app-client)/./app/login/page.tsx",
+    "D:\\next\\nextjs\\app\\product\\page.tsx#": {
+      "id": "(app-client)/./app/product/page.tsx",
       "name": "",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
-    "D:\\next\\nextjs\\app\\login\\page.tsx#default": {
-      "id": "(app-client)/./app/login/page.tsx",
+    "D:\\next\\nextjs\\app\\product\\page.tsx#default": {
+      "id": "(app-client)/./app/product/page.tsx",
       "name": "default",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\client\\link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\esm\\client\\link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\client\\link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\esm\\client\\link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\client\\link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\node_modules\\next\\dist\\esm\\client\\link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\app\\register\\page.tsx": {
-      "id": "(app-client)/./app/register/page.tsx",
-      "name": "*",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\app\\register\\page.tsx#": {
-      "id": "(app-client)/./app/register/page.tsx",
-      "name": "",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
-      ],
-      "async": false
-    },
-    "D:\\next\\nextjs\\app\\register\\page.tsx#default": {
-      "id": "(app-client)/./app/register/page.tsx",
-      "name": "default",
-      "chunks": [
-        "app/register/page:static/chunks/app/register/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     }
