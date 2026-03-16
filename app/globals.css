@@ -1087,6 +1087,224 @@ a {
   gap: 10px;
 }
 
+.product-time-picker {
+  position: relative;
+}
+
+.product-time-panel {
+  position: fixed;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  z-index: 85;
+  border: 1px solid var(--product-filter-select-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  padding: 18px 20px 16px;
+}
+
+.product-time-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product-time-panel-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.product-time-panel-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.product-time-panel-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-time-panel-option {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--product-filter-select-border);
+  border-radius: 999px;
+  background: #fff;
+  color: #4b5563;
+  text-align: left;
+  font-size: 16px;
+}
+
+.product-time-panel-footer {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product-time-panel-apply {
+  grid-column: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-width: 150px;
+  height: 44px;
+  padding: 0 18px;
+  text-align: left;
+  border-radius: 999px;
+  border: 1px solid var(--product-filter-select-border);
+  background: #fff;
+  color: #1677ff;
+}
+
+.product-date-panel {
+  position: fixed;
+  z-index: 85;
+  border: 1px solid var(--product-filter-select-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  padding: 12px 14px 14px;
+}
+
+.product-date-panel-summary {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.product-date-panel-summary strong {
+  color: #111827;
+}
+
+.product-date-panel-calendars {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.product-date-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-date-calendar-header {
+  display: grid;
+  grid-template-columns: 26px 1fr 26px;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.product-date-calendar-title {
+  text-align: center;
+  font-size: 15px;
+  color: #374151;
+}
+
+.product-date-nav {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #d8e0ea;
+  border-radius: 8px;
+  background: #fff;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.product-date-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.product-date-weekday {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.product-date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.product-date-cell {
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #374151;
+  font-size: 14px;
+}
+
+.product-date-cell.muted {
+  color: #94a3b8;
+}
+
+.product-date-cell.in-range {
+  background: #eff6ff;
+}
+
+.product-date-cell.edge {
+  background: #1677ff;
+  color: #fff;
+}
+
+.product-date-cell.disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.product-date-panel-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.product-date-link {
+  border: none;
+  background: transparent;
+  color: #1677ff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0;
+}
+
+.product-date-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-date-secondary {
+  min-width: 78px;
+  height: 34px;
+  border: 1px solid #d8e0ea;
+  border-radius: 10px;
+  background: #fff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-date-primary {
+  min-width: 88px;
+  height: 34px;
+  border-radius: 10px;
+}
+
 .product-choice {
   border: none;
   background: transparent;
@@ -1095,6 +1313,14 @@ a {
   align-items: center;
   gap: 10px;
   text-align: left;
+}
+
+.product-choice-radio-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .product-choice-radio {
@@ -1115,7 +1341,7 @@ a {
 .product-choice-box {
   width: 100%;
   min-height: 40px;
-  padding: 0 12px;
+  padding: 0 10px 0 12px;
   border-radius: 12px;
   border: 1px solid var(--product-filter-trigger-border);
   background: var(--product-filter-trigger-bg);
@@ -1123,8 +1349,22 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   font-size: 16px;
+}
+
+.product-choice-label {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.product-choice-label-range {
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-choice-icon {
@@ -1492,6 +1732,32 @@ a {
 
   .product-group-options {
     max-width: none;
+  }
+
+  .product-time-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: min(480px, calc(100vw - 48px));
+  }
+
+  .product-date-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: min(620px, calc(100vw - 48px));
+  }
+
+  .product-date-panel-calendars {
+    grid-template-columns: 1fr;
+  }
+
+  .product-time-panel-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .product-time-panel-apply {
+    grid-column: auto;
   }
 
   .product-table-shell {
