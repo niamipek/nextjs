@@ -854,6 +854,11 @@ a {
   border-bottom-right-radius: 0;
 }
 
+.product-filter-dropdown-multi.open .product-filter-select {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
 .product-filter-menu {
   position: absolute;
   top: calc(100% - 1px);

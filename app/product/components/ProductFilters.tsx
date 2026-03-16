@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { categoryOptions, itemGroupOptions, locationOptions, statusOptions, stockOptions, supplierOptions } from "../data";
 import { GroupMultiSelect } from "./GroupMultiSelect";
@@ -21,7 +22,11 @@ function FilterChoice({
       <span className="product-choice-box">
         <span>{label}</span>
         {hasArrow ? <span className="product-choice-icon">{">"}</span> : null}
-        {hasCalendar ? <span className="product-choice-icon">[]</span> : null}
+        {hasCalendar ? (
+          <span className="product-choice-icon">
+            <Image src="/calendar-icon.png" alt="" width={16} height={16} />
+          </span>
+        ) : null}
       </span>
     </button>
   );
