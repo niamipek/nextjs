@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { categoryOptions, itemGroupOptions, locationOptions, statusOptions, stockOptions, supplierOptions } from "../data";
 import { GroupMultiSelect } from "./GroupMultiSelect";
 
+const booleanFilterOptions = ["Tat ca", "Co", "Khong"];
+
 const timePresetGroups = [
   {
     title: "Theo ngay",
@@ -441,10 +443,12 @@ function FilterDropdown({
   options,
   value,
   onChange,
+  direction = "down",
 }: {
   options: string[];
   value: string;
   onChange?: (nextValue: string) => void;
+  direction?: "down" | "up";
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -461,7 +465,10 @@ function FilterDropdown({
   }, []);
 
   return (
-    <div ref={containerRef} className={`product-filter-dropdown ${isOpen ? "open" : ""}`}>
+    <div
+      ref={containerRef}
+      className={`product-filter-dropdown ${isOpen ? "open" : ""} ${direction === "up" ? "open-up" : ""}`}
+    >
       <button type="button" className="product-filter-select" onClick={() => setIsOpen((open) => !open)}>
         <span>{value}</span>
       </button>
@@ -487,18 +494,68 @@ function FilterDropdown({
   );
 }
 
+function FilterChipGroup({
+  options,
+  value,
+  onChange,
+}: {
+  options: string[];
+  value: string;
+  onChange: (nextValue: string) => void;
+}) {
+  return (
+    <div className="product-chip-row">
+      {options.map((option) => (
+        <button
+          key={option}
+          type="button"
+          className={`product-chip ${value === option ? "active" : ""}`}
+          aria-pressed={value === option}
+          onClick={() => onChange(option)}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 type ProductFiltersProps = {
+  selectedCategory: string;
+  selectedDirectSale: string;
   selectedItemGroups: string[];
+  selectedLocation: string;
+  selectedSalesChannelLink: string;
+  selectedStatus: string;
+  selectedSupplier: string;
+  onSelectedCategoryChange: (nextValue: string) => void;
+  onSelectedDirectSaleChange: (nextValue: string) => void;
   onSelectedItemGroupsChange: (nextValues: string[]) => void;
+  onSelectedLocationChange: (nextValue: string) => void;
+  onSelectedSalesChannelLinkChange: (nextValue: string) => void;
+  onSelectedStatusChange: (nextValue: string) => void;
   selectedStock: string;
   onSelectedStockChange: (nextValue: string) => void;
+  onSelectedSupplierChange: (nextValue: string) => void;
 };
 
 export function ProductFilters({
+  selectedCategory,
+  selectedDirectSale,
   selectedItemGroups,
+  selectedLocation,
+  selectedSalesChannelLink,
+  selectedStatus,
+  selectedSupplier,
+  onSelectedCategoryChange,
+  onSelectedDirectSaleChange,
   onSelectedItemGroupsChange,
+  onSelectedLocationChange,
+  onSelectedSalesChannelLinkChange,
+  onSelectedStatusChange,
   selectedStock,
   onSelectedStockChange,
+  onSelectedSupplierChange,
 }: ProductFiltersProps) {
   return (
     <aside className="card product-filter-card">
@@ -529,52 +586,36 @@ export function ProductFilters({
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Nha cung cap</h3>
-        <FilterDropdown options={supplierOptions} value={supplierOptions[0]} />
+        <FilterDropdown options={supplierOptions} value={selectedSupplier} onChange={onSelectedSupplierChange} />
       </div>
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Vi tri</h3>
-        <FilterDropdown options={locationOptions} value={locationOptions[0]} />
+        <FilterDropdown options={locationOptions} value={selectedLocation} onChange={onSelectedLocationChange} />
       </div>
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Loai hang</h3>
-        <FilterDropdown options={categoryOptions} value={categoryOptions[0]} />
+        <FilterDropdown options={categoryOptions} value={selectedCategory} onChange={onSelectedCategoryChange} />
       </div>
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Ban truc tiep</h3>
-        <div className="product-chip-row">
-          <button type="button" className="product-chip active">
-            Tat ca
-          </button>
-          <button type="button" className="product-chip">
-            Co
-          </button>
-          <button type="button" className="product-chip">
-            Khong
-          </button>
-        </div>
+        <FilterChipGroup options={booleanFilterOptions} value={selectedDirectSale} onChange={onSelectedDirectSaleChange} />
       </div>
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Lien ket kenh ban</h3>
-        <div className="product-chip-row">
-          <button type="button" className="product-chip active">
-            Tat ca
-          </button>
-          <button type="button" className="product-chip">
-            Co
-          </button>
-          <button type="button" className="product-chip">
-            Khong
-          </button>
-        </div>
+        <FilterChipGroup
+          options={booleanFilterOptions}
+          value={selectedSalesChannelLink}
+          onChange={onSelectedSalesChannelLinkChange}
+        />
       </div>
 
       <div className="product-filter-group">
         <h3 className="product-filter-title">Trang thai hang hoa</h3>
-        <FilterDropdown options={statusOptions} value={statusOptions[0]} />
+        <FilterDropdown options={statusOptions} value={selectedStatus} onChange={onSelectedStatusChange} direction="up" />
       </div>
     </aside>
   );

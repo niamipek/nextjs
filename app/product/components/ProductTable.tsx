@@ -5,9 +5,10 @@ import type { Product } from "../data";
 type ProductTableProps = {
   products: Product[];
   onOpenImport: () => void;
+  onOpenProductDetail: (product: Product) => void;
 };
 
-export function ProductTable({ products, onOpenImport }: ProductTableProps) {
+export function ProductTable({ products, onOpenImport, onOpenProductDetail }: ProductTableProps) {
   return (
     <section className="card product-list-card">
       <div className="product-list-header">
@@ -46,9 +47,20 @@ export function ProductTable({ products, onOpenImport }: ProductTableProps) {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product.code}>
+              <tr
+                key={product.code}
+                className="product-catalog-row"
+                onClick={() => onOpenProductDetail(product)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    onOpenProductDetail(product);
+                  }
+                }}
+                tabIndex={0}
+              >
                 <td className="product-catalog-checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" onClick={(event) => event.stopPropagation()} />
                 </td>
                 <td className="product-catalog-fav">*</td>
                 <td>{product.code}</td>
