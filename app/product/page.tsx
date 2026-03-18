@@ -38,10 +38,12 @@ export default function ProductPage() {
   return (
     <>
       <main className="dashboard-page">
-        <DashboardHeader />
-        <DashboardNav />
+        <div className="dashboard-topbar">
+          <DashboardHeader />
+          <DashboardNav />
+        </div>
 
-        <section className="product-page-shell">
+        <section className="dashboard-content-shell product-page-shell">
           <ProductFilters
             selectedCategory={selectedCategory}
             selectedDirectSale={selectedDirectSale}
