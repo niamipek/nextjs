@@ -92,10 +92,12 @@ function HorizontalChart({
 export default function Page() {
   return (
     <main className="dashboard-page">
-      <DashboardHeader />
-      <DashboardNav />
+      <div className="dashboard-topbar">
+        <DashboardHeader />
+        <DashboardNav />
+      </div>
 
-      <section className="dashboard-grid">
+      <section className="dashboard-content-shell dashboard-grid">
         <div>
           <article className="card">
             <h2 className="card-title">Ket qua ban hang hom nay</h2>
