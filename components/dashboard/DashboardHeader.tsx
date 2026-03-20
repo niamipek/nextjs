@@ -1,10 +1,12 @@
+import Image from "next/image";
+import logo from "public/logo.png";
+
 export function DashboardHeader() {
   return (
     <header className="top-header">
       <div className="brand">
-        <span className="brand-shape" />
-        <span className="brand-shape second" />
-        <span>KLTN</span>
+        <Image src={logo} alt="Logo" width="85" height="60" />
+        
       </div>
       <div className="header-actions">
         <span className="icon-dot">i</span>

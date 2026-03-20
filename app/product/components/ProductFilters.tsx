@@ -5,24 +5,24 @@ import { useEffect, useRef, useState } from "react";
 import { categoryOptions, itemGroupOptions, locationOptions, statusOptions, stockOptions, supplierOptions } from "../data";
 import { GroupMultiSelect } from "./GroupMultiSelect";
 
-const booleanFilterOptions = ["Tat ca", "Co", "Khong"];
+const booleanFilterOptions = ["All", "Yes", "No"];
 
 const timePresetGroups = [
   {
-    title: "Theo ngay",
-    options: ["Ngay mai", "Ngay kia", "3 ngay toi", "5 ngay toi", "7 ngay toi"],
+    title: "By day",
+    options: ["Tomorrow", "Day after tomorrow", "Next 3 days", "Next 5 days", "Next 7 days"],
   },
   {
-    title: "Theo tuan",
-    options: ["Tuan nay", "Tuan toi", "2 tuan toi"],
+    title: "By week",
+    options: ["This week", "Next week", "Next 2 weeks"],
   },
   {
-    title: "Theo thang",
-    options: ["Thang nay", "Thang toi", "30 ngay toi", "2 thang toi", "3 thang toi"],
+    title: "By month",
+    options: ["This month", "Next month", "Next 30 days", "Next 2 months", "Next 3 months"],
   },
 ];
 
-const calendarWeekLabels = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+const calendarWeekLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 function startOfDay(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -102,7 +102,7 @@ function buildMonthGrid(monthDate: Date) {
 }
 
 function formatMonthTitle(monthDate: Date) {
-  return `Thang ${monthDate.getMonth() + 1} ${monthDate.getFullYear()}`;
+  return `Month ${monthDate.getMonth() + 1} ${monthDate.getFullYear()}`;
 }
 
 function FilterChoice({
@@ -141,7 +141,7 @@ function TimePresetPicker({
 }) {
   const [openPanel, setOpenPanel] = useState<"preset" | "custom" | null>(null);
   const [selectionMode, setSelectionMode] = useState<"preset" | "custom">("preset");
-  const [selectedPreset, setSelectedPreset] = useState("Toan thoi gian");
+  const [selectedPreset, setSelectedPreset] = useState("All time");
   const [displayMonth, setDisplayMonth] = useState(() => new Date(new Date().getFullYear(), new Date().getMonth(), 1));
   const [appliedRangeStart, setAppliedRangeStart] = useState(startOfDay(new Date()));
   const [appliedRangeEnd, setAppliedRangeEnd] = useState(startOfDay(new Date()));
@@ -287,7 +287,7 @@ function TimePresetPicker({
           }}
         >
           <span className={`product-choice-label ${selectionMode === "custom" ? "product-choice-label-range" : ""}`}>
-            {selectionMode === "custom" ? customRangeLabel : "Tuy chinh"}
+            {selectionMode === "custom" ? customRangeLabel : "Custom"}
           </span>
           <span className="product-choice-icon">
             <Image src="/calendar-icon.png" alt="" width={16} height={16} />
@@ -340,9 +340,9 @@ function TimePresetPicker({
       {openPanel === "custom" ? (
         <div className="product-date-panel" style={panelStyle ?? undefined}>
           <div className="product-date-panel-summary">
-            <span>Tu ngay: </span>
+            <span>From: </span>
             <strong>{formatDate(draftRangeStart)}</strong>
-            <span> - Den ngay: </span>
+            <span> - To: </span>
             <strong>{formatDate(draftRangeEnd)}</strong>
           </div>
 
@@ -411,12 +411,12 @@ function TimePresetPicker({
                 setDraftRangeEnd(today);
               }}
             >
-              Hom nay
+              Today
             </button>
 
             <div className="product-date-actions">
               <button type="button" className="product-date-secondary" onClick={() => setOpenPanel(null)}>
-                Bo qua
+                Cancel
               </button>
               <button
                 type="button"
@@ -429,7 +429,7 @@ function TimePresetPicker({
                   setOpenPanel(null);
                 }}
               >
-                Ap dung
+                Apply
               </button>
             </div>
           </div>
@@ -561,51 +561,51 @@ export function ProductFilters({
     <aside className="card product-filter-card">
       <div className="product-filter-group">
         <div className="product-filter-label-row">
-          <h3 className="product-filter-title">Nhom hang</h3>
+          <h3 className="product-filter-title">Groups</h3>
           <button type="button" className="product-filter-link">
-            Tao moi
+            Create new
           </button>
         </div>
         <GroupMultiSelect options={itemGroupOptions} selectedValues={selectedItemGroups} onChange={onSelectedItemGroupsChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Ton kho</h3>
+        <h3 className="product-filter-title">Stock</h3>
         <FilterDropdown options={stockOptions} value={selectedStock} onChange={onSelectedStockChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Du kien het hang</h3>
-        <TimePresetPicker label="Toan thoi gian" disablePastDates />
+        <h3 className="product-filter-title">Expected stockout</h3>
+        <TimePresetPicker label="All time" disablePastDates />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Thoi gian tao</h3>
-        <TimePresetPicker label="Toan thoi gian" />
+        <h3 className="product-filter-title">Created time</h3>
+        <TimePresetPicker label="All time" />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Nha cung cap</h3>
+        <h3 className="product-filter-title">Supplier</h3>
         <FilterDropdown options={supplierOptions} value={selectedSupplier} onChange={onSelectedSupplierChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Vi tri</h3>
+        <h3 className="product-filter-title">Location</h3>
         <FilterDropdown options={locationOptions} value={selectedLocation} onChange={onSelectedLocationChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Loai hang</h3>
+        <h3 className="product-filter-title">Category</h3>
         <FilterDropdown options={categoryOptions} value={selectedCategory} onChange={onSelectedCategoryChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Ban truc tiep</h3>
+        <h3 className="product-filter-title">Direct sale</h3>
         <FilterChipGroup options={booleanFilterOptions} value={selectedDirectSale} onChange={onSelectedDirectSaleChange} />
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Lien ket kenh ban</h3>
+        <h3 className="product-filter-title">Sales channel link</h3>
         <FilterChipGroup
           options={booleanFilterOptions}
           value={selectedSalesChannelLink}
@@ -614,7 +614,7 @@ export function ProductFilters({
       </div>
 
       <div className="product-filter-group">
-        <h3 className="product-filter-title">Trang thai hang hoa</h3>
+        <h3 className="product-filter-title">Product status</h3>
         <FilterDropdown options={statusOptions} value={selectedStatus} onChange={onSelectedStatusChange} direction="up" />
       </div>
     </aside>

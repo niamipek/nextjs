@@ -5,6 +5,7 @@ import { DashboardNav } from "@/components/dashboard/DashboardNav";
 import { ImportModal } from "./components/ImportModal";
 import { ProductDetailModal } from "./components/ProductDetailModal";
 import { ProductFilters } from "./components/ProductFilters";
+import { ProductListHeader } from "./components/ProductListHeader";
 import { ProductTable } from "./components/ProductTable";
 import { useProductPage } from "./hooks/useProductPage";
 
@@ -12,6 +13,7 @@ export default function ProductPage() {
   const {
     filteredProducts,
     isImportOpen,
+    searchQuery,
     selectedCategory,
     selectedFile,
     selectedDirectSale,
@@ -23,6 +25,7 @@ export default function ProductPage() {
     selectedStock,
     selectedSupplier,
     setIsImportOpen,
+    setSearchQuery,
     setSelectedCategory,
     setSelectedDirectSale,
     setSelectedFile,
@@ -41,6 +44,17 @@ export default function ProductPage() {
         <div className="dashboard-topbar">
           <DashboardHeader />
           <DashboardNav />
+        </div>
+
+        <div className="dashboard-content-shell product-list-header-shell">
+          <div className="product-page-title-shell">
+            <h1 className="product-list-title">Products</h1>
+          </div>
+          <ProductListHeader
+            searchQuery={searchQuery}
+            onSearchQueryChange={setSearchQuery}
+            onOpenImport={() => setIsImportOpen(true)}
+          />
         </div>
 
         <section className="dashboard-content-shell product-page-shell">
@@ -64,8 +78,8 @@ export default function ProductPage() {
           />
           <ProductTable
             products={filteredProducts}
-            onOpenImport={() => setIsImportOpen(true)}
             onOpenProductDetail={setSelectedProductDetail}
+            detailRefreshKey={selectedProductDetail?.code ?? ""}
           />
         </section>
       </main>

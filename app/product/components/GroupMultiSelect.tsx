@@ -107,7 +107,7 @@ export function GroupMultiSelect({ options, selectedValues, onChange }: GroupMul
               </span>
             ))
           ) : (
-            <span className="product-filter-placeholder">Chon nhom hang</span>
+            <span className="product-filter-placeholder">Select groups</span>
           )}
         </div>
       </button>
@@ -115,9 +115,9 @@ export function GroupMultiSelect({ options, selectedValues, onChange }: GroupMul
       {isOpen ? (
         <div className="product-group-menu" style={menuStyle ?? undefined}>
           <div className="product-group-header">
-            <h4 className="product-group-title">Nhom hang</h4>
+            <h4 className="product-group-title">Groups</h4>
             <button type="button" className="product-group-create">
-              + Tao moi
+              + Create new
             </button>
           </div>
 
@@ -127,7 +127,7 @@ export function GroupMultiSelect({ options, selectedValues, onChange }: GroupMul
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               className="product-group-search"
-              placeholder="Tim kiem"
+              placeholder="Search"
             />
           </div>
 
@@ -147,10 +147,10 @@ export function GroupMultiSelect({ options, selectedValues, onChange }: GroupMul
 
           <div className="product-group-actions">
             <button type="button" className="product-group-action-link" onClick={() => onChange([])}>
-              Bo chon tat ca
+              Clear all
             </button>
             <button type="button" className="sale-btn product-group-apply" onClick={() => setIsOpen(false)}>
-              Ap dung
+              Apply
             </button>
           </div>
         </div>

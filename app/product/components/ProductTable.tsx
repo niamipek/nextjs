@@ -1,48 +1,70 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Product } from "../data";
 
 type ProductTableProps = {
   products: Product[];
-  onOpenImport: () => void;
   onOpenProductDetail: (product: Product) => void;
+  detailRefreshKey?: string;
 };
 
-export function ProductTable({ products, onOpenImport, onOpenProductDetail }: ProductTableProps) {
+function getStoredProductImage(productCode: string) {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const rawValue = window.localStorage.getItem(`product-detail-image:${productCode}`);
+
+  if (!rawValue) {
+    return null;
+  }
+
+  try {
+    const parsedValue = JSON.parse(rawValue) as
+      | { images?: Array<{ imageDataUrl?: string }> }
+      | { imageDataUrl?: string };
+
+    if ("images" in parsedValue && Array.isArray(parsedValue.images)) {
+      return parsedValue.images[0]?.imageDataUrl ?? null;
+    }
+
+    return "imageDataUrl" in parsedValue ? parsedValue.imageDataUrl ?? null : null;
+  } catch {
+    return null;
+  }
+}
+
+export function ProductTable({ products, onOpenProductDetail, detailRefreshKey = "" }: ProductTableProps) {
+  const [productImageMap, setProductImageMap] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const nextImageMap = products.reduce<Record<string, string>>((accumulator, product) => {
+      accumulator[product.code] = getStoredProductImage(product.code) ?? product.imageUrl;
+      return accumulator;
+    }, {});
+
+    setProductImageMap(nextImageMap);
+  }, [detailRefreshKey, products]);
+
   return (
     <section className="card product-list-card">
-      <div className="product-list-header">
-        <div>
-          <h1 className="product-list-title">Danh sach hang hoa</h1>
-          <p className="product-list-subtitle">Quan ly san pham da nhap, ton kho va thong tin gia ban.</p>
-        </div>
-        <div className="product-list-actions">
-          <input className="product-list-search" placeholder="Tim ma hang, ten hang..." />
-          <button type="button" className="product-list-secondary" onClick={onOpenImport}>
-            Nhap Excel
-          </button>
-          <button type="button" className="sale-btn product-list-primary">
-            Them hang hoa
-          </button>
-        </div>
-      </div>
-
       <div className="product-table-shell">
         <table className="product-catalog-table">
           <thead>
             <tr>
               <th className="product-catalog-checkbox">
-                <input type="checkbox" />
+                <span className="product-catalog-checkbox-indicator" aria-hidden="true" />
               </th>
-              <th className="product-catalog-fav">*</th>
-              <th>Ma hang</th>
-              <th>Ten hang</th>
-              <th>Gia ban</th>
-              <th>Gia von</th>
-              <th>Ton kho</th>
-              <th>Khach dat</th>
-              <th>Trang thai</th>
-              <th>Thoi gian tao</th>
+              <th className="product-catalog-fav">Image</th>
+              <th>Product code</th>
+              <th>Product name</th>
+              <th>Sale price</th>
+              <th>Cost price</th>
+              <th>Stock</th>
+              <th>Reserved</th>
+              <th>Status</th>
+              <th>Created at</th>
             </tr>
           </thead>
           <tbody>
@@ -62,7 +84,13 @@ export function ProductTable({ products, onOpenImport, onOpenProductDetail }: Pr
                 <td className="product-catalog-checkbox">
                   <input type="checkbox" onClick={(event) => event.stopPropagation()} />
                 </td>
-                <td className="product-catalog-fav">*</td>
+                <td className="product-catalog-fav">
+                  <img
+                    src={productImageMap[product.code] ?? product.imageUrl}
+                    alt={product.name}
+                    className="product-catalog-thumb"
+                  />
+                </td>
                 <td>{product.code}</td>
                 <td>{product.name}</td>
                 <td>{product.salePrice}</td>
@@ -79,7 +107,7 @@ export function ProductTable({ products, onOpenImport, onOpenProductDetail }: Pr
 
       <div className="product-pagination">
         <div className="product-pagination-meta">
-          Hien thi {products.length === 0 ? "0-0" : `1-${products.length}`} / {products.length} hang hoa
+          Showing {products.length === 0 ? "0-0" : `1-${products.length}`} / {products.length} products
         </div>
         <div className="product-pagination-controls">
           <button type="button" className="product-page-button">
