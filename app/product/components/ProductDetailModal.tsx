@@ -84,10 +84,10 @@ function readImageFile(file: File) {
         return;
       }
 
-      reject(new Error("Khong doc duoc file anh."));
+      reject(new Error("Unable to read image file."));
     };
 
-    reader.onerror = () => reject(new Error("Khong doc duoc file anh."));
+    reader.onerror = () => reject(new Error("Unable to read image file."));
     reader.readAsDataURL(file);
   });
 }
@@ -179,21 +179,21 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
     <div className="product-detail-overlay" role="dialog" aria-modal="true" aria-labelledby="product-detail-title" onClick={onClose}>
       <div className="product-detail-modal" onClick={(event) => event.stopPropagation()}>
         <div className="product-detail-header">
-          <button type="button" className="product-detail-close" onClick={onClose} aria-label="Dong modal chi tiet san pham">
+          <button type="button" className="product-detail-close" onClick={onClose} aria-label="Close product detail modal">
             x
           </button>
           <h2 id="product-detail-title" className="product-detail-title">
-            Chi tiet hang hoa
+            Product details
           </h2>
           <div className="product-detail-actions">
             <button type="button" className="product-detail-action product-detail-action-copy">
-              Chinh sua
+              Edit
             </button>
             <button type="button" className="product-detail-action product-detail-action-delete">
-              Them moi
+              Add new
             </button>
             <button type="button" className="product-detail-action product-detail-action-save">
-              Luu lai
+              Save
             </button>
           </div>
         </div>
@@ -201,16 +201,16 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
         <div className="product-detail-body">
           <section className="product-detail-section">
             <div className="product-detail-section-head">
-              <h3 className="product-detail-section-title">Thong tin chung</h3>
+              <h3 className="product-detail-section-title">General information</h3>
               <span className="product-detail-status">{product.status}</span>
             </div>
 
             <div className="product-detail-layout">
               <div className="product-detail-grid">
-                <DetailField label="Ma hang" value={product.code} />
-                <DetailField label="Ten hang" value={product.name} />
-                <DetailField label="Gia ban" value={`${product.salePrice} VND`} />
-                <DetailField label="Mo ta" value={product.description} />
+                <DetailField label="Product code" value={product.code} />
+                <DetailField label="Product name" value={product.name} />
+                <DetailField label="Sale price" value={`${product.salePrice} VND`} />
+                <DetailField label="Description" value={product.description} />
               </div>
 
               <div className="product-detail-visual">
@@ -221,10 +221,10 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
                       <div className="product-detail-image-hover-actions">
                         <label className="product-detail-image-action">
                           <input className="product-detail-upload-input" type="file" accept="image/*" multiple onChange={handleInputChange} />
-                          Them anh
+                          Add image
                         </label>
                         <button type="button" className="product-detail-image-remove" onClick={() => handleRemoveImage(selectedImageIndex)}>
-                          Xoa anh
+                          Remove image
                         </button>
                       </div>
                     </div>
@@ -239,9 +239,9 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
                       onDrop={handleDrop}
                     >
                       <input className="product-detail-upload-input" type="file" accept="image/*" multiple onChange={handleInputChange} />
-                      <div className="product-detail-upload-title">Chon hoac tha anh vao day</div>
-                      <div className="product-detail-upload-note">(Ho tro PNG, JPG, WEBP. Ban co the tai len nhieu anh cho moi san pham)</div>
-                      <span className="product-detail-upload-button">Chon anh</span>
+                      <div className="product-detail-upload-title">Choose or drop images here</div>
+                      <div className="product-detail-upload-note">(Supports PNG, JPG, WEBP. You can upload multiple images for each product)</div>
+                      <span className="product-detail-upload-button">Choose images</span>
                     </label>
                   )}
                 </div>
@@ -254,7 +254,7 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
                         type="button"
                         className={`product-detail-gallery-thumb ${index === selectedImageIndex ? "active" : ""}`}
                         onClick={() => setSelectedImageIndex(index)}
-                        aria-label={`Xem anh ${index + 1} cua ${product.name}`}
+                        aria-label={`View image ${index + 1} of ${product.name}`}
                       >
                         <img src={image.imageDataUrl} alt={`${product.name} ${index + 1}`} className="product-detail-gallery-thumb-image" />
                       </button>
@@ -274,16 +274,16 @@ export function ProductDetailModal({ open, product, onClose }: ProductDetailModa
 
           <section className="product-detail-section">
             <div className="product-detail-subhead">
-              <h3 className="product-detail-section-title">Tong quan san pham</h3>
+              <h3 className="product-detail-section-title">Product summary</h3>
             </div>
 
             <div className="product-detail-summary-table">
               <div className="product-detail-summary-head">#</div>
-              <div className="product-detail-summary-head">Ma hang</div>
-              <div className="product-detail-summary-head">Ten san pham</div>
-              <div className="product-detail-summary-head">Gia von</div>
-              <div className="product-detail-summary-head">Ton kho</div>
-              <div className="product-detail-summary-head">Khach dat</div>
+              <div className="product-detail-summary-head">Product code</div>
+              <div className="product-detail-summary-head">Product name</div>
+              <div className="product-detail-summary-head">Cost price</div>
+              <div className="product-detail-summary-head">Stock</div>
+              <div className="product-detail-summary-head">Reserved</div>
 
               <div className="product-detail-summary-cell">1</div>
               <div className="product-detail-summary-cell">{product.code}</div>

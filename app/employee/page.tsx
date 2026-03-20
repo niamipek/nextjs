@@ -290,9 +290,9 @@ const employees: EmployeeDetail[] = [
     permanentAddress: "Hung Yen",
     bankAccount: "VPBank - 7711223344",
     emergencyPhone: "0971 444 555",
-    maritalStatus: "Da ket hon",
+
     ethnicity: "Kinh",
-    religion: "-",
+
     idNumber: "001198007777",
     idIssueDate: "09/12/2020",
     department: "Kho van",

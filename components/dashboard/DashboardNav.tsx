@@ -1,5 +1,13 @@
-const navItems = ["Tong quan", "Hang hoa", "Don hang", "Khach hang", "Nhan vien", "So quy", "Bao cao", "Ban online"];
-
+const navItems = [
+  "Overview",      // Tổng quan
+  "Products",      // Hàng hóa (hoặc Items/Goods)
+  "Orders",        // Đơn hàng
+  "Customers",     // Khách hàng
+  "Employees",     // Nhân viên (hoặc Staff)
+  "Cashbook",      // Sổ quỹ (hoặc Cash Flow)
+  "Reports",       // Báo cáo
+  "Online Sales"   // Bán online
+];
 export function DashboardNav() {
   return (
     <nav className="main-nav">
@@ -9,7 +17,7 @@ export function DashboardNav() {
         </span>
       ))}
       <span className="nav-spacer" />
-      <button className="sale-btn">Ban hang</button>
+      <button className="sale-btn">Sell product</button>
     </nav>
   );
 }

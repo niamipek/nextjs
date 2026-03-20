@@ -273,7 +273,7 @@ export default function Page() {
                 </div>
               ))}
 
-              <div className="support-pill">Chat 1900 6522</div>
+              
             </div>
           </article>
         </aside>
