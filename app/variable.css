@@ -116,4 +116,20 @@
   --product-import-file: #1273ea;
   --product-import-help-line: #374151;
   --product-import-link: #1273ea;
+
+  --timesheet-border: #dbe3ee;
+  --timesheet-header-bg: #ffffff;
+  --timesheet-header-text: #0f172a;
+  --timesheet-subtle-text: #64748b;
+  --timesheet-highlight: #1677ff;
+  --timesheet-highlight-text: #ffffff;
+  --timesheet-summary-bg: #f8fbff;
+  --timesheet-summary-pill-bg: #eff6ff;
+  --timesheet-summary-pill-text: #1d4ed8;
+  --timesheet-shift-morning-bg: #dbeafe;
+  --timesheet-shift-morning-text: #0b63d1;
+  --timesheet-shift-afternoon-bg: #dcf3e5;
+  --timesheet-shift-afternoon-text: #0f7a3d;
+  --timesheet-shift-evening-bg: #feedd8;
+  --timesheet-shift-evening-text: #bc6a00;
 }

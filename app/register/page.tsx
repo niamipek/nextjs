@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { FormEvent } from "react";
 import { useState } from "react";
@@ -16,11 +16,11 @@ export default function RegisterPage() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Register form values", { fullName, email, password });//kết quả của form đăng ký 
+    console.log("Register form values", { fullName, email, password });
   };
 
   return (
-    <AuthShell title="Tạo tài khoản mới" subtitle="Tham gia cùng chúng tôi để trải nghiệm dịch vụ tốt nhất">
+    <AuthShell title="Create a new account" subtitle="Join us to experience the best service">
       <SocialRow>
         <SocialButton icon={<GoogleIcon />} label="Google" />
         <SocialButton icon={<GithubIcon />} label="Github" />
@@ -31,8 +31,8 @@ export default function RegisterPage() {
       <AuthForm onSubmit={handleSubmit}>
         <AuthInput
           name="fullName"
-          label="Họ và tên"
-          placeholder="Nguyễn Văn A"
+          label="Full name"
+          placeholder="Nguyen Van A"
           leadingIcon={<UserIcon />}
           value={fullName}
           onChange={(event) => setFullName(event.target.value)}
@@ -46,7 +46,7 @@ export default function RegisterPage() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <FieldLabel text="Mật khẩu" />
+        <FieldLabel text="Password" />
         <AuthInput
           name="password"
           label=""
@@ -57,11 +57,11 @@ export default function RegisterPage() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <AuthCTA text="Tạo tài khoản" type="submit" />
+        <AuthCTA text="Create account" type="submit" />
       </AuthForm>
 
       <Link href="/login">
-        <AuthFooter text="Đã có tài khoản?" action="Đăng nhập ngay" />
+        <AuthFooter text="Already have an account?" action="Sign in now" />
       </Link>
     </AuthShell>
   );
