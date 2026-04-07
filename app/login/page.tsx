@@ -1,25 +1,25 @@
-"use client";
+﻿"use client";
 
-import type { FormEvent } from "react";
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import Link from "next/link";
 import { AuthInput, PasswordHeader } from "@/components/auth/AuthInput";
 import { AuthCTA, AuthDivider, AuthFooter, AuthForm } from "@/components/auth/AuthParts";
 import { EyeIcon, GithubIcon, GoogleIcon, LockIcon, MailIcon } from "@/components/auth/AuthIcons";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { SocialButton, SocialRow } from "@/components/auth/SocialButton";
+import { loginAction } from "./actions";
+
+const initialState = {
+  message: "",
+};
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("Login form values", { email, password });//kết quả của form đăng nhập
-  };
+  const [state, formAction, isPending] = useActionState(loginAction, initialState);
+  const [email, setEmail] = useState(""); //manager@example.com
+  const [password, setPassword] = useState("");//123456
 
   return (
-    <AuthShell title="Chào mừng trở lại" subtitle="Vui lòng nhập thông tin để truy cập hệ thống">
+    <AuthShell title="Welcome back" subtitle="Please enter your information to access the system">
       <SocialRow>
         <SocialButton icon={<GoogleIcon />} label="Google" />
         <SocialButton icon={<GithubIcon />} label="Github" />
@@ -27,7 +27,7 @@ export default function LoginPage() {
 
       <AuthDivider />
 
-      <AuthForm onSubmit={handleSubmit}>
+      <AuthForm action={formAction}>
         <AuthInput
           name="email"
           label="Email"
@@ -37,23 +37,28 @@ export default function LoginPage() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
-        <PasswordHeader forgotText="Quên mật khẩu?" />
+        <PasswordHeader forgotText="Forgot password?" forgotHref="/forgot" />
         <AuthInput
           name="password"
           label=""
-          placeholder="••••••••"
+          placeholder="********"
           leadingIcon={<LockIcon />}
           trailing={<EyeIcon />}
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <AuthCTA text="Đăng nhập" type="submit" />
+        {state.message ? (
+          <p style={{ margin: 0, color: "#dc2626", fontSize: 14, lineHeight: 1.5 }}>
+            {state.message}
+          </p>
+        ) : null}
+        <AuthCTA text={isPending ? "Signing in..." : "Sign in"} type="submit" disabled={isPending} />
       </AuthForm>
 
-      <Link href="/register">
-        <AuthFooter text="Chưa có tài khoản?" action="Đăng ký ngay" />
-      </Link>
+      {/* <Link href="/register">
+        <AuthFooter text="Don't have an account?" action="Sign up now" />
+      </Link> */}
     </AuthShell>
   );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ChangeEvent, ReactNode } from "react";
 import styles from "./auth.module.css";
 
@@ -45,17 +46,23 @@ export function FieldLabel({ text }: { text: string }) {
   return <div className={styles.label}>{text}</div>;
 }
 
-export function PasswordHeader({ forgotText }: { forgotText?: string }) {
+export function PasswordHeader({ forgotText, forgotHref }: { forgotText?: string; forgotHref?: string }) {
   if (!forgotText) {
-    return <div className={styles.label}>Mật khẩu</div>;
+    return <div className={styles.label}>Password</div>;
   }
 
   return (
     <div className={styles.labelRow}>
-      <div className={styles.label}>Mật khẩu</div>
-      <button type="button" className={styles.link}>
-        {forgotText}
-      </button>
+      <div className={styles.label}>Password</div>
+      {forgotHref ? (
+        <Link href={forgotHref} className={styles.link}>
+          {forgotText}
+        </Link>
+      ) : (
+        <button type="button" className={styles.link}>
+          {forgotText}
+        </button>
+      )}
     </div>
   );
 }
