@@ -27,15 +27,8 @@ export default function ForgotPasswordPage() {
     }
 
     sessionStorage.setItem("forgot-password-email", email);
-
-    if (state.debugCode) {
-      sessionStorage.setItem("forgot-password-debug-code", state.debugCode);
-    } else {
-      sessionStorage.removeItem("forgot-password-debug-code");
-    }
-
     router.push(`/forgot/verify?email=${encodeURIComponent(email)}`);
-  }, [email, router, state.debugCode, state.success]);
+  }, [email, router, state.success]);
 
   return (
     <main className={styles.shell}>

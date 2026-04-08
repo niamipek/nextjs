@@ -21,6 +21,7 @@ export default function ForgotPasswordResetPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, formAction, isPending] = useActionState(updateForgotPasswordAction, initialState);
+  const [redirectMessage, setRedirectMessage] = useState("");
 
   useEffect(() => {
     const storedEmail = sessionStorage.getItem("forgot-password-email") || "";
@@ -33,8 +34,13 @@ export default function ForgotPasswordResetPage() {
     }
 
     sessionStorage.removeItem("forgot-password-email");
-    sessionStorage.removeItem("forgot-password-debug-code");
-    router.push("/login");
+    setRedirectMessage("Doi mat khau thanh cong. Dang quay ve trang dang nhap...");
+
+    const timer = window.setTimeout(() => {
+      router.push("/login");
+    }, 1600);
+
+    return () => window.clearTimeout(timer);
   }, [router, state.success]);
 
   const statusClassName = state.message
@@ -74,9 +80,13 @@ export default function ForgotPasswordResetPage() {
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
 
-            {state.message ? <p className={statusClassName}>{state.message}</p> : null}
+            {redirectMessage ? (
+              <p className={`${styles.status} ${styles.statusSuccess}`}>{redirectMessage}</p>
+            ) : state.message ? (
+              <p className={statusClassName}>{state.message}</p>
+            ) : null}
 
-            <button type="submit" className={styles.button} disabled={isPending}>
+            <button type="submit" className={styles.button} disabled={isPending || Boolean(redirectMessage)}>
               <span>{isPending ? "Dang cap nhat..." : "Xac nhan doi mat khau"}</span>
               <span className={styles.buttonArrow} aria-hidden>
                 {">"}

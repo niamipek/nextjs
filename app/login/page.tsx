@@ -56,9 +56,9 @@ export default function LoginPage() {
         <AuthCTA text={isPending ? "Signing in..." : "Sign in"} type="submit" disabled={isPending} />
       </AuthForm>
 
-      {/* <Link href="/register">
-        <AuthFooter text="Don't have an account?" action="Sign up now" />
-      </Link> */}
+      <Link href="/change-password">
+        <AuthFooter text="Đổi mật khẩu" action="Ngay bây giờ" />
+      </Link>
     </AuthShell>
   );
 }
