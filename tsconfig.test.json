@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",
+    "outDir": ".test-dist",
+    "rootDir": ".",
+    "noEmit": false,
+    "incremental": false,
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": [
+    "tests/**/*.ts",
+    "lib/change-password-flow.ts",
+    "lib/credentials.ts",
+    "lib/reset-otp.ts"
+  ]
+}

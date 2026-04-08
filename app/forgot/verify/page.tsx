@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AuthInput } from "@/components/auth/AuthInput";
 import { LockIcon } from "@/components/auth/AuthIcons";
-import { verifyResetOtpAction, type ForgotPasswordActionState } from "../actions";
+import { sendResetOtpAction, verifyResetOtpAction, type ForgotPasswordActionState } from "../actions";
 import styles from "../forgot.module.css";
 
 const initialState: ForgotPasswordActionState = {
@@ -19,16 +19,14 @@ export default function ForgotPasswordVerifyPage() {
   const queryEmail = searchParams.get("email") || "";
   const [email, setEmail] = useState(queryEmail);
   const [code, setCode] = useState("");
-  const [debugCode, setDebugCode] = useState("");
   const [state, formAction, isPending] = useActionState(verifyResetOtpAction, initialState);
+  const [resendState, resendAction, isResending] = useActionState(sendResetOtpAction, initialState);
 
   useEffect(() => {
     const storedEmail = sessionStorage.getItem("forgot-password-email") || "";
-    const storedDebugCode = sessionStorage.getItem("forgot-password-debug-code") || "";
     const resolvedEmail = queryEmail || storedEmail;
 
     setEmail(resolvedEmail);
-    setDebugCode(storedDebugCode);
   }, [queryEmail]);
 
   useEffect(() => {
@@ -67,7 +65,6 @@ export default function ForgotPasswordVerifyPage() {
             />
 
             {state.message ? <p className={statusClassName}>{state.message}</p> : null}
-            {debugCode ? <p className={styles.debugText}>OTP test trong dev: {debugCode}</p> : null}
 
             <button type="submit" className={styles.button} disabled={isPending}>
               <span>{isPending ? "Dang xac minh..." : "Xac minh OTP"}</span>
@@ -86,10 +83,18 @@ export default function ForgotPasswordVerifyPage() {
         )}
 
         <div className={styles.inlineActions}>
-          <Link href="/forgot" className={styles.secondaryLink}>
-            Gui lai ma OTP
-          </Link>
+          <form action={resendAction}>
+            <input type="hidden" name="email" value={email} />
+            <button type="submit" className={styles.inlineButton} disabled={!hasEmail || isResending}>
+              {isResending ? "Dang gui lai..." : "Gui lai ma OTP"}
+            </button>
+          </form>
         </div>
+        {resendState.message ? (
+          <p className={`${styles.status} ${resendState.success ? styles.statusSuccess : styles.statusError}`}>
+            {resendState.message}
+          </p>
+        ) : null}
 
         <Link href="/login" className={styles.backLink}>
           <span className={styles.backArrow} aria-hidden>

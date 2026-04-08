@@ -105,6 +105,25 @@
   text-decoration: underline;
 }
 
+.inlineButton {
+  border: 0;
+  background: transparent;
+  color: #4560f3;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.inlineButton:hover {
+  text-decoration: underline;
+}
+
+.inlineButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
 .button {
   margin-top: 10px;
   width: 100%;
